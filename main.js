@@ -1,1 +1,1 @@
-console.log('hello, world!')
+// Linting : ESLint
