@@ -1,0 +1,8 @@
+{
+  "conpilerOption": {
+    "strict" : true
+  },
+  "include" : [
+    "src/**/*"
+  ]
+}
