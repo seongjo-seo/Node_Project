@@ -1,6 +1,6 @@
 {
     "scripts": {
-        "test": " test "
+      "debug":"node src/main.js"
     },
     "repository": {
         "type": "git",
