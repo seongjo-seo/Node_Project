@@ -6,14 +6,22 @@
 // Linting : ESLint
 // Type checking : TypeScript
 
-const http = require('http')
+function Person(name) {
+  this.name = name
+}
 
-const server = http.createServer((req, res) => {
-  res.statusCode = 200
-  res.end('Hello!')
-})
+Person.prototype.greet = function greet() {
+  return `Hi, ${this.name}!`
+}
 
-const PORT = 4000
-server.listen(PORT, () => {
-  console.log(`The server is Listening at port : ${PORT}.`)
-})
+function Student(name) {
+  this.__proto__.constructor(name)
+}
+
+Student.prototype.study = function study() {
+  return `${this.name} is studying.`
+}
+
+Object.setPrototypeOf(Student.prototype, Person.prototype)
+
+console.log([] instanceof Array, [] instanceof Object)
