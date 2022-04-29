@@ -1,6 +1,65 @@
-function foo(head, ...rest) {
-  console.log(head)
-  console.log(rest)
+// @ts-check
+/* eslint-disable no-restricted-syntax */
+
+/**
+ * @typedef Person
+ * @property {number} age
+ * @property {string} city
+ * @property {string | string[]} [pet]
+ */
+
+/** @type {Person[]} */
+const people = [
+  {
+    age: 20,
+    city: '서울',
+    pet: ['cat', 'dog'],
+  },
+  {
+    age: 40,
+    city: '부산',
+  },
+  {
+    age: 31,
+    city: '대구',
+    pet: ['cat', 'dog'],
+  },
+  {
+    age: 36,
+    city: '서울',
+  },
+  {
+    age: 27,
+    city: '부산',
+    pet: 'cat',
+  },
+  {
+    age: 24,
+    city: '서울',
+    pet: 'dog',
+  },
+]
+
+function solveA() {
+  /** @type {string[]}*/
+  const cities = []
+
+  for (const person of people) {
+    if (person.age < 30) {
+      if (!cities.find((city) => person.city === city)) {
+        cities.push(person.city)
+      }
+    }
+  }
+
+  return cities
 }
 
-foo(1, 2, 3, 4)
+function solveAModern() {
+  const allCities = people.filter(({ age }) => age < 30).map(({ city }) => city)
+  const set = new Set(allCities)
+  return Array.from(set)
+}
+
+console.log('solveA', solveA())
+console.log('seolveAModern', solveAModern())
